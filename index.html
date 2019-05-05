@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>THE WINE SHOP</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="slick/slick.css">
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css">
+  <link rel="stylesheet" href="master.css">
+  <link href="https://fonts.googleapis.com/css?family=Smythe" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+  <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+</head>
+<body>
+      <div class="container">
+            <div class="outline"></div>
+            <div class="logo">Smythe</div>
+            <div class="menu">
+                  <ion-icon name="menu"></ion-icon>
+            </div>
+            <div class="title">
+                  THE WINE SHOP
+            </div>
+            <div class="tagline">
+                  As much character as the people who make them.
+            </div>
+            <div class="morewine">
+                  <button>Open Up</button>
+            </div>
+      </div>
+      <div class="wines">
+            <div id="wrap">
+                  <a href="#" class="block">
+                        <div class="product one">
+                              <img src="01.png" alt="">
+                              <div class="txt">
+                                    <h1>Smythe Wheat</h1>
+                                    <p>Price : $40</p>
+                                    <div class="add">
+                                          <button>BUY NOW</button>
+                                    </div>
+                              </div>
+                        </div>
+                  </a>
+                  <a href="#" class="block">
+                        <div class="product two">
+                              <img src="02.png" alt="">
+                              <div class="txt">
+                                    <h1>Smythe Mixology</h1>
+                                    <p>Price : $40</p>
+                                    <div class="add">
+                                          <button>BUY NOW</button>
+                                    </div>
+                              </div>
+                        </div>
+                  </a>
+                  <a href="#" class="block">
+                        <div class="product three">
+                              <img src="03.png" alt="">
+                              <div class="txt">
+                                    <h1>Smythe Cherry</h1>
+                                    <p>Price : $40</p>
+                                    <div class="add">
+                                          <button>BUY NOW</button>
+                                    </div>
+                              </div>
+                        </div>
+                  </a>
+                  <a href="#" class="block">
+                        <div class="product four">
+                              <img src="04.png" alt="">
+                              <div class="txt">
+                                    <h1>Pepper</h1>
+                                    <p>Price : $40</p>
+                                    <div class="add">
+                                          <button>BUY NOW</button>
+                                    </div>
+                              </div>
+                        </div>
+                  </a>
+            </div>
+            <a class="close-btn">close</a>
+      </div>
+
+      <script type="text/javascript">
+
+      $(document).ready(function() {
+            var docWidth = $('body').width(),
+            $wrap = $('#wrap'),
+            $images = $('#wrap .block'),
+            slidesWidth = $wrap.width();
+
+            $(window).on('resize', function() {
+                  docWidth = $('body').width();
+                  slidesWidth = $wrap.width();
+            })
+
+            $(document).mousemove(function(e) {
+                  var mouseX = e.pageX,
+                  offset = mouseX / docWidth * slidesWidth - mouseX / 2;
+
+                  $images.css({
+                        '-wrbkit-transform' : 'translate3d(' + -offset + 'px,0,0)',
+                        'transform' : 'translate3d(' + -offset + 'px,0,0)'
+                  });
+            });
+      })
+
+      var t1 = new TimelineMax({paused: true});
+
+      TweenMax.from(".logo", 0.5, {
+            opacity: 0,
+            y: 10,
+            delay: 1
+      });
+
+      TweenMax.from(".menu", 0.5, {
+            opacity: 0,
+            y: 10,
+            delay: 1.2
+      });
+
+      TweenMax.from(".title", 3, {
+            opacity: 0,
+            delay: 1.4
+      });
+
+      TweenMax.from(".tagline", 3, {
+            opacity: 0,
+            delay: 1.6
+      });
+
+      TweenMax.from(".morewine", 0.5, {
+            opacity: 0,
+            y: 4,
+            delay: 1.8
+      });
+
+      t1.to(".wines", 1, {
+            autoAlpha: 1
+      });
+
+      t1.from(".one", 0.5, {
+            opacity: 0,
+            y: 20,
+            delay: 0.1
+      },"-=1");
+
+      t1.from(".two", 0.5, {
+            opacity: 0,
+            y: 20,
+            delay: 0.3
+      },"-=1");
+
+      t1.from(".three", 0.5, {
+            opacity: 0,
+            y: 20,
+            delay: 0.5
+      },"-=1");
+
+      t1.from(".four", 0.5, {
+            opacity: 0,
+            y: 20,
+            delay: 0.7
+      },"-=1");
+
+      t1.reverse();
+      $(document).on("click", ".morewine", function() {
+            t1.reversed(!t1.reversed());
+      });
+
+      $(document).on("click", "a", function() {
+            t1.reversed(!t1.reversed());
+      });
+
+      $(document).on("click", ".close-btn a", function() {
+            t1.reversed(!t1.reversed());
+      });
+
+      </script>
+</body>
+</html>
